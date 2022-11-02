@@ -47,6 +47,8 @@ def train():
                               'does not have permission to access the data.').format(training_path, channel_name))
         raw_data = [ pd.read_csv(file, header=True) for file in input_files ]
         train_data = pd.concat(raw_data)
+        #df['Fee'] = df['Fee'].astype(float)
+        train_data['sepal_width'] = train_data['sepal_width'].astype(float)
 
         # labels are in the first column
         train_y = train_data.ix[:,0]
